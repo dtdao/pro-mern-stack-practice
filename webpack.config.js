@@ -2,10 +2,10 @@ const webpack = require("webpack");
 
 module.exports = {
 	entry: {
-		app: './src/App.jsx'
+		app: ['./src/App.jsx']
 	},
 	output: {
-		path: __dirname + '/static/',
+		path: __dirname + './static/',
 		filename: 'app.bundle.js',
 		chunkFilename: 'vendor.bundle.js'
 	},
@@ -39,7 +39,6 @@ module.exports = {
 		}
 		
 	},
-	plugins: [
-		new webpack.HotModuleReplacementPlugin()
-	]
+	plugins: [],
+	devtool: 'source-map'
 }

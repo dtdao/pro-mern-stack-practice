@@ -1,12 +1,12 @@
-'use strict'
-const express = require("express");
-const bparser = require("body-parser");
-const MongoClient = require("mongodb").MongoClient;
-const Issue = require("./issue.js");
+import express from 'express';
+import bodyParser from 'body-parser';
+import { MongoClient } from 'mongodb';
+import Issue from './issue.js';
+import 'babel-polyfill';
 
 const app = express();
 app.use(express.static('static'));
-app.use(bparser.json());
+app.use(bodyParser.json());
 
 if(process.env.NODE_ENV !== 'producation'){
 	const webpack = require("webpack");
