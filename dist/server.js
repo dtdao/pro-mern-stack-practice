@@ -16,7 +16,14 @@ var _issue2 = _interopRequireDefault(_issue);
 
 require('babel-polyfill');
 
+var _sourceMapSupport = require('source-map-support');
+
+var _sourceMapSupport2 = _interopRequireDefault(_sourceMapSupport);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_sourceMapSupport2.default.install();
+
 
 var app = (0, _express2.default)();
 app.use(_express2.default.static('static'));
@@ -111,3 +118,4 @@ _mongodb.MongoClient.connect("mongodb://localhost:27017/", function (err, client
 // 		res.status(500).json({message: `Internal Server Error: ${err}`});
 // 	})
 // })
+//# sourceMappingURL=server.js.map

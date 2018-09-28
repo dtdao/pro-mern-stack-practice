@@ -3,6 +3,9 @@ import bodyParser from 'body-parser';
 import { MongoClient } from 'mongodb';
 import Issue from './issue.js';
 import 'babel-polyfill';
+import sourceMapSupport from 'source-map-support';
+sourceMapSupport.install();
+
 
 const app = express();
 app.use(express.static('static'));
@@ -54,7 +57,7 @@ app.post("/api/issues", (req, res) => {
 	}
 
 	///WHY!!!!!!!!?!?!?!?!?!?!?!?!
-	db.collection('issues').insertOne(newIssue).then(result => 
+	db.collection('issues').insertOne(Issue.cleanupIssue(newIssue)).then(result => 
 		 db.collection('issues').find({_id: result.insertedId}).limit(1).next()
 	).then(newIssue =>
 		res.json(newIssue)
